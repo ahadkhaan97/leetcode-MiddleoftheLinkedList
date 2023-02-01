@@ -3,17 +3,18 @@ fun main() {
 }
 
 fun prepareList(array: IntArray): ListNode? {
-
-    val head = ListNode(array[0])
-    head.next = null
-    for (i in 1 until array.size) {
-        var temp = head
-        while (temp.next != null) {
-            temp = temp.next!!
+    return if (array.isNotEmpty()) {
+        val head = ListNode(array[0])
+        head.next = null
+        for (i in 1 until array.size) {
+            var temp = head
+            while (temp.next != null) {
+                temp = temp.next!!
+            }
+            temp.next = ListNode(array[i])
         }
-        temp.next = ListNode(array[i])
-    }
-    return head
+        head
+    } else null
 }
 
 fun middleNode(head: ListNode?): ListNode? {
